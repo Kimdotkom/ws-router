@@ -6,6 +6,7 @@ import Features from './pages/Features';
 import Pricing from './pages/Pricing';
 import EroorPage from './pages/EroorPage';
 import Login from './pages/Login';
+import MovieDetails from './pages/MovieDetails';
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
           { isAdmin ? <Route path="/pricing" element={ <Pricing /> } /> : null}
 
           <Route path="/login" element={ <Login /> } />
+
+          <Route path="/MovieDetails/:id" element={ <MovieDetails /> } />
 
           <Route path="/*" element={ <EroorPage /> } />
         </Routes>
