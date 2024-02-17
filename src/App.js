@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import Navigation from './components/Navigation';
+import Home from './pages/Home';
+import {Routes, Route} from 'react-router-dom'
+import Features from './pages/Features';
+import Pricing from './pages/Pricing';
+import EroorPage from './pages/EroorPage';
+import Login from './pages/Login';
+
 
 function App() {
+  let isAdmin = true
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation isAdmin={isAdmin} />
+
+        <Routes>
+          <Route path="/" element={ <Home /> } />
+          <Route path="/features" element={ <Features /> } />
+          { isAdmin ? <Route path="/pricing" element={ <Pricing /> } /> : null}
+
+          <Route path="/login" element={ <Login /> } />
+
+          <Route path="/*" element={ <EroorPage /> } />
+        </Routes>
+        
     </div>
   );
 }
